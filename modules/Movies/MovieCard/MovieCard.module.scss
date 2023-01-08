@@ -1,0 +1,52 @@
+.movieCard {
+  &-container {
+    max-width: 190px;
+    transition: all 0.2s linear;
+    &:hover .movieCard-image {
+      filter: brightness(0.4);
+      transform: scale(1.2);
+      transition: all 0.5s linear;
+    }
+
+    &:hover .movieCard-icon {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:hover .movieCard-title {
+      color: var(--purple) !important;
+    }
+  }
+
+  &-media {
+    position: relative;
+    background-color: var(--dark33);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    transition: all 0.2s linear;
+    object-fit: cover;
+    aspect-ratio: 190/266;
+  }
+
+  &-image {
+    height: 100%;
+  }
+
+  &-icon {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.2s linear;
+    background-color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

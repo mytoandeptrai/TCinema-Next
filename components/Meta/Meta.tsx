@@ -10,8 +10,8 @@ type Props = {
 };
 
 const Meta = ({
-  title = 'NetFilm - Watch HD movies online for free - Highest Rated Movies Recommendation',
-  description = 'Popular episodes updated quickly, American hot series Tension, comedy, thriller,Newest hottest dramasall in NetFilm',
+  title = 'TCinema - Watch HD movies online for free - Highest Rated Movies Recommendation',
+  description = 'Popular episodes updated quickly, American hot series Tension, comedy, thriller,Newest hottest dramas in NetFilm',
   image = `/image-seo.png`
 }: Props) => {
   const router = useRouter();
@@ -24,10 +24,10 @@ const Meta = ({
       <meta name="robots" content="index,follow" />
       <meta name="description" content={description} key="description" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" key="viewport" />
-      <meta name="copyright" content="lamhoang1256" key="copyright" />
+      <meta name="copyright" content="mytoandeptrai" key="copyright" />
       <meta
         name="keywords"
-        content="netfilm, net-film, netfilm.vercel.app, lamhoang1256"
+        content="tcinema, net-film, netfilm.vercel.app, mytoandeptrai"
         key="keywords"
       />
       <link rel="icon" href="/favicon.png" key="favicon" />

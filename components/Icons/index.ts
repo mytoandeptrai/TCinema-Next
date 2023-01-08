@@ -1,25 +1,26 @@
-import IconStar from './IconStar';
-import IconPlay from './IconPlay';
-import IconSearch from './IconSearch';
-import IconGithub from './IconGithub';
-import IconMenu from './IconMenu';
+import Icon3Dot from './Icon3Dot';
+import Icon404 from './Icon404';
+import IconBell from './IconBell';
 import IconClose from './IconClose';
 import IconEmptyFollow from './IconEmptyFollow';
+import IconEmptyHistory from './IconEmptyHistory';
+import IconFollow from './IconFollow';
+import IconGithub from './IconGithub';
 import IconHeart from './IconHeart';
+import IconHiddenPassword from './IconHiddenPassword';
+import IconKeyPassword from './IconKeyPassword';
+import IconLike from './IconLike';
+import IconLoading from './IconLoading';
+import IconLogout from './IconLogout';
+import IconMenu from './IconMenu';
+import IconPlay from './IconPlay';
+import IconSearch from './IconSearch';
 import IconShare from './IconShare';
-import Icon404 from './Icon404';
+import IconShowPassword from './IconShowPassword';
+import IconStar from './IconStar';
 import IconTrash from './IconTrash';
 import IconUploadImage from './IconUploadImage';
-import IconEmptyHistory from './IconEmptyHistory';
-import IconLogout from './IconLogout';
-import IconBell from './IconBell';
-import Icon3Dot from './Icon3Dot';
-import IconLike from './IconLike';
 import IconUser from './IconUser';
-import IconKeyPassword from './IconKeyPassword';
-import IconHiddenPassword from './IconHiddenPassword';
-import IconShowPassword from './IconShowPassword';
-import IconFollow from './IconFollow';
 
 export {
   IconStar,
@@ -43,5 +44,6 @@ export {
   IconHeart,
   IconShare,
   Icon404,
-  Icon3Dot
+  Icon3Dot,
+  IconLoading
 };

@@ -1,5 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ButtonScrollToTop } from 'components/ButtonScrollToTop';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Authentication } from 'components/Authentication';
+import { ButtonScrollToTop } from 'components/ButtonCustomize';
+import { Meta } from 'components/Meta';
+import 'locales/i18n';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import NProgress from 'nprogress';
@@ -13,11 +17,20 @@ import 'styles/global.scss';
 import 'styles/reset.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 Modal.setAppElement('#__next');
 Modal.defaultStyles = {
   content: {}
 };
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 0
+    }
+  }
+});
+
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const handleRouteStart = () => NProgress.start();
@@ -32,14 +45,16 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, []);
 
-  const queryClient = new QueryClient();
-
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-        <Toaster position="top-right" />
-        <ButtonScrollToTop />
+        <Meta />
+        <Authentication>
+          <Component {...pageProps} />
+          <Toaster position="top-right" />
+          <ButtonScrollToTop />
+        </Authentication>
+        <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
     </Provider>
   );

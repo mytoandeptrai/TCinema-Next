@@ -6,7 +6,7 @@ interface CustomLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 const WrapperLink = ({ children, href = '/', ...props }: CustomLinkProps) => {
   return (
     <Link href={href}>
-      <a {...props}>{children}</a>
+      <span {...props}>{children}</span>
     </Link>
   );
 };

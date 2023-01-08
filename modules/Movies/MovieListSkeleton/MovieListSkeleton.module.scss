@@ -1,0 +1,55 @@
+.movieListSkeleton {
+  &-container {
+    margin: 20px 0;
+  }
+
+  &-heading {
+    margin-top: 20px;
+    width: 200px;
+    height: 28px;
+    border-radius: 4px;
+    background-color: var(--dark33);
+    // The shine that's going to move across the skeleton:
+    background-image: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 0.5), rgba(#fff, 0));
+    background-size: 40px 100%; // width of the shine
+    background-repeat: no-repeat; // No need to repeat the shine effect
+    background-position: left -40px top 0; // Place shine on the left side, with offset on the left based on the width of the shine - see background-size
+  }
+
+  &-poster {
+    max-width: 190px;
+    height: 266px;
+    border-radius: 6px;
+    background-color: var(--dark33);
+    // The shine that's going to move across the skeleton:
+    background-image: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 0.5), rgba(#fff, 0));
+    background-size: 40px 100%; // width of the shine
+    background-repeat: no-repeat; // No need to repeat the shine effect
+    background-position: left -40px top 0; // Place shine on the left side, with offset on the left based on the width of the shine - see background-size
+  }
+
+  &-title {
+    margin-top: 15px;
+    height: 29px;
+    max-width: 190px;
+    border-radius: 4px;
+    background-color: var(--dark33);
+    // The shine that's going to move across the skeleton:
+    background-image: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 0.5), rgba(#fff, 0));
+    background-size: 40px 100%; // width of the shine
+    background-repeat: no-repeat; // No need to repeat the shine effect
+    background-position: left -40px top 0; // Place shine on the left side, with offset on the left based on the width of the shine - see background-size
+  }
+}
+
+// THE LOADING EFFECT
+.skeleton {
+  animation: shine 3s ease infinite; // increase animation time to see effect in 'slow-mo'
+}
+
+@keyframes shine {
+  to {
+    // Move shine from left to right, with offset on the right based on the width of the shine - see background-size
+    background-position: right -40px top 0;
+  }
+}

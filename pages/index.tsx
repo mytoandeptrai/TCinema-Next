@@ -1,3 +1,4 @@
+import axiosClient from 'configs/axiosClient';
 import { REVALIDATE_TIME } from 'constants/global';
 import { LayoutPrimary } from 'layouts';
 import { CheckInView } from 'modules/CheckInView';
@@ -6,7 +7,6 @@ import { MovieListSkeleton } from 'modules/Movies';
 import { GetStaticProps } from 'next';
 import { useFetchingHomeMoviesInfinity } from 'queries/movies';
 import { useCallback, useMemo } from 'react';
-import { getHomeMoviesHandler } from 'services/movies';
 import { IBanner, IHomeSection } from 'types';
 
 interface HomePageProps {
@@ -66,16 +66,22 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await getHomeMoviesHandler(0);
-  const { homeSections, banners } = data;
-
-  return {
-    props: {
-      banners: banners,
-      initialHomeSections: homeSections
-    },
-    revalidate: REVALIDATE_TIME.success
-  };
+  try {
+    const { data } = await axiosClient.get(`/api/home`);
+    const { banners, homeSections } = data;
+    return {
+      props: {
+        banners: banners,
+        initialHomeSections: homeSections
+      },
+      revalidate: REVALIDATE_TIME.success
+    };
+  } catch (error) {
+    return {
+      props: { banners: [], initialHomeSections: [] },
+      revalidate: REVALIDATE_TIME.fail
+    };
+  }
 };
 
 export default HomePage;

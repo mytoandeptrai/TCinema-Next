@@ -1,0 +1,57 @@
+.watchHome {
+  &-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  &-heading {
+    margin-top: 14px;
+    font-size: 2.3rem;
+  }
+
+  &-content {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  &-sidebar {
+    flex: 1;
+    max-height: 495px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &-more {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  .watchHome {
+    &-container {
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .watchHome {
+    &-sidebar {
+      max-height: 280px;
+    }
+
+    &-more {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
+  }
+}

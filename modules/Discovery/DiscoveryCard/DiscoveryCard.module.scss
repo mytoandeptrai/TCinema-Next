@@ -1,0 +1,117 @@
+.discoveryCard {
+  &-container {
+    margin-bottom: 40px;
+  }
+
+  &-movieInfo {
+    display: flex;
+    gap: 0 14px;
+  }
+
+  &-movieAvatar {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--dark33);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-movieDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+  }
+
+  &-movieIntro {
+    color: #ffffffe6;
+    font-weight: 500;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+  }
+
+  &-movieLink {
+    color: var(--purple);
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    &:hover {
+      transition: all 0.2s linear;
+      text-decoration: underline;
+    }
+  }
+
+  &-loading {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    span {
+      margin-top: -10px;
+      font-weight: 500;
+    }
+  }
+
+  &-playerContent {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  &-player {
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: black;
+    video[poster] {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-actions {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background-color: var(--dark33);
+    border: none;
+  }
+
+  &-likeCount {
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .discoveryCard {
+    &-playerContent {
+      flex-direction: column;
+    }
+
+    &-actions {
+      flex-direction: row;
+    }
+  }
+}

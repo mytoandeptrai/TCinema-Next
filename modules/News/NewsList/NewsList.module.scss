@@ -1,0 +1,25 @@
+.newsList {
+  &-wrapper {
+    margin: 20px 0;
+  }
+
+  &-heading {
+    margin: 20px 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  &-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    grid-gap: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .newsList {
+    &-content {
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    }
+  }
+}

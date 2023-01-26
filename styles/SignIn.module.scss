@@ -1,0 +1,86 @@
+.signIn {
+  &-wrapper {
+    min-height: 100vh;
+    padding: 14px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    background-image: url('/background-auth.png');
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+  }
+
+  &-content {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    padding: 50px 60px;
+    background-color: var(--dark);
+    border-radius: 10px;
+    z-index: 2;
+  }
+
+  &-form {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-heading {
+    font-size: 2.4rem;
+    color: var(--purple);
+  }
+
+  &-fields {
+    margin-top: 30px;
+  }
+
+  &-btn {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    line-height: 2.4rem;
+    font-weight: 600;
+    margin: 15px 0;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      height: 30px;
+      width: 30px;
+      transform: translateY(-50%);
+    }
+  }
+
+  &-alreadyAccount {
+    padding-top: 20px;
+    text-align: center;
+    span {
+      color: blue;
+    }
+  }
+
+  &-forgot {
+    padding-top: 10px;
+    color: var(--grayc4);
+    text-align: center;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .signIn {
+    &-content {
+      max-width: 100%;
+      padding: 40px 20px;
+    }
+  }
+}

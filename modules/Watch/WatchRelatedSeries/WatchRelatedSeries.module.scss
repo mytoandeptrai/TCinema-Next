@@ -1,0 +1,46 @@
+.watchRelatedSeries {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &-heading {
+    font-weight: 600;
+    font-size: 1.7rem;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  &-movie {
+    display: flex;
+    gap: 10px;
+    &:hover img {
+      transition: all 0.2s linear;
+      filter: brightness(0.6);
+    }
+    &:hover span {
+      transition: all 0.2s linear;
+      color: var(--purple);
+    }
+  }
+
+  &-thumb {
+    background: var(--dark33);
+    border-radius: 4px;
+    overflow: hidden;
+
+    img {
+      transition: all 0.2s linear;
+    }
+  }
+
+  &-movieInfo {
+    flex: 1;
+    span {
+      color: white;
+      font-weight: 500;
+      transition: all 0.2s linear;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.textToggleMore {
+  &-desc {
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  &-toggle {
+    background-color: transparent;
+    border: none;
+    color: var(--purple);
+    font-weight: 500;
+  }
+}

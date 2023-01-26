@@ -1,0 +1,23 @@
+.watchStarsItem {
+  &-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &-avatar {
+    img {
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 100rem;
+      object-fit: cover;
+    }
+  }
+
+  &-name {
+    font-weight: 500;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    color: white;
+  }
+}

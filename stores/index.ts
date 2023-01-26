@@ -1,9 +1,12 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import authReducer from './slices/auth';
+import followReducer from './slices/follow';
+
 export const store = configureStore({
   reducer: {
-    auth: authReducer
+    auth: authReducer,
+    follows: followReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 });

@@ -4,6 +4,18 @@ export const userRole = {
   ADMIN: 'ADMIN'
 };
 
+export const userStatus = {
+  ACTIVE: 'ACTIVE',
+  WARNING: 'WARNING',
+  BANNED: 'BANNED'
+};
+
+export const commentStatus = {
+  APPROVED: 'APPROVED',
+  WARNING: 'WARNING',
+  BANNED: 'BANNED'
+};
+
 export const IMAGE_SIZE = {
   banner: {
     width: 1240,
@@ -24,8 +36,8 @@ export const STALE_TIME = {
 };
 
 export const REVALIDATE_TIME = {
-  success: 360,
-  fail: 60
+  success: 60 * 60 * 60 /** 1 day */,
+  fail: 60 * 5 /** 5 minutes */
 };
 
 export const defaultAvatar =

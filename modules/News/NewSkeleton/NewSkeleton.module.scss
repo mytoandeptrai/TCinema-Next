@@ -1,0 +1,26 @@
+.newsList {
+  &-skeletonList {
+    margin-top: 20px;
+  }
+
+  &-skeletonThumbnail {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background-color: var(--dark33);
+  }
+
+  &-skeletonTitle {
+    margin-top: 10px;
+    height: 47.6px;
+    background-color: var(--dark33);
+    border-radius: 4px;
+  }
+
+  &-skeletonDescription {
+    margin-top: 10px;
+    height: 38px;
+    background-color: var(--dark33);
+    border-radius: 4px;
+  }
+}

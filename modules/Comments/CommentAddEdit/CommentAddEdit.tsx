@@ -118,38 +118,33 @@ const CommentAddEdit = ({ initialComment, toggleOpenEdit = () => {}, isEdit = fa
             />
           </div>
           <button type="submit" className={cx('commentForm-btn')}>
-            Post
+            {isEdit ? 'Save' : 'Post'}
           </button>
         </>
       );
     }
 
     return (
-      <>
-        <TextArea
-          rows={1}
-          value={commentValue}
-          placeholder="Write comment..."
-          onKeyDown={(e) => e.stopPropagation()}
-          onKeyUp={(e) => e.stopPropagation()}
-          onChange={(e) => setCommentValue(e.target.value)}
-          className={textAreaClassName}
-          onKeyPress={(e) => e.stopPropagation()}
-        />
+      <div className={cx('commentForm-edit')}>
+        <div className={cx('commentForm-edit__textArea')}>
+          <TextArea
+            rows={1}
+            value={commentValue}
+            placeholder="Write comment..."
+            onKeyDown={(e) => e.stopPropagation()}
+            onKeyUp={(e) => e.stopPropagation()}
+            onChange={(e) => setCommentValue(e.target.value)}
+            className={textAreaClassName}
+            onKeyPress={(e) => e.stopPropagation()}
+          />
+        </div>
 
         <div className={cx('commentForm-actions')}>
-          <button
-            className={cx('commentForm-btn', 'commentForm-cancel')}
-            type="button"
-            onClick={toggleOpenEdit}
-          >
-            Cancel
-          </button>
           <button type="submit" className={cx('commentForm-btn', 'commentForm-submit')}>
             Update
           </button>
         </div>
-      </>
+      </div>
     );
   };
 

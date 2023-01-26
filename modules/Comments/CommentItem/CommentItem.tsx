@@ -1,13 +1,20 @@
 import classNames from 'classnames/bind';
 import { EmojisReactions } from 'components/EmojisReactions';
 import { Image } from 'components/Image';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import useModal from 'hooks/useModal';
+import { db } from 'libs/firebase-app';
 import React, { useCallback, useMemo, useState } from 'react';
 import { useAppSelector } from 'stores';
 import { IComment } from 'types';
 import { checkTimeAgo } from 'utils/timeFormat';
 import { CommentAddEdit } from '../CommentAddEdit';
 import styles from './CommentItem.module.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { defaultAvatar } from 'constants/global';
+import { toast } from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import { ModalUserReactions } from 'components/ModalCustomize';
 
 const cx = classNames.bind(styles);
 
@@ -33,11 +40,56 @@ const CommentItem = ({ comment }: Props) => {
     setIsEditing(!isEditing);
   }, [isEditing, setIsEditing, comment, currentUser]);
 
-  const handleChangeEmojis = useCallback((value: string) => {
-    console.log('🚀 ~ file: CommentItem.tsx:33 ~ handleChangeEmojis ~ value', value);
-  }, []);
+  const handleChangeEmojis = useCallback(
+    async (value: string) => {
+      try {
+        const collectionRef = doc(db, 'comments', comment.id);
+        if (!currentUser || myReaction?.reaction === value) return null;
 
-  const handleDeleteComment = useCallback(() => {}, []);
+        if (!myReaction) {
+          comment.reactions.push({
+            id: uuidv4(),
+            userId: currentUser.uid,
+            avatar: currentUser.photoURL || defaultAvatar,
+            fullname: currentUser.displayName,
+            reaction: value
+          });
+          await updateDoc(collectionRef, { reactions: comment.reactions });
+          setEmojis(value);
+          return;
+        }
+
+        comment.reactions[foundMyReactionIndex].reaction = value;
+        await updateDoc(collectionRef, { reactions: comment.reactions });
+        setEmojis(value);
+      } catch (error: any) {
+        toast.error(error?.message);
+      }
+    },
+    [comment, currentUser, myReaction, foundMyReactionIndex]
+  );
+
+  const handleDeleteComment = useCallback(() => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const colRef = doc(db, 'comments', comment.id);
+          await deleteDoc(colRef);
+          toast.success('Delete comment successfully!');
+        } catch (error: any) {
+          toast.error(error?.message);
+        }
+      }
+    });
+  }, [comment]);
 
   const renderCommentReactions = () => {
     if (comment.reactions.length === 0) return null;
@@ -74,6 +126,7 @@ const CommentItem = ({ comment }: Props) => {
             <CommentAddEdit
               toggleOpenEdit={toggleOpenEditTextAreaHandler}
               initialComment={comment}
+              isEdit={isEditing}
             />
           ) : (
             <>
@@ -92,7 +145,7 @@ const CommentItem = ({ comment }: Props) => {
                 className={cx('commentItem-actionEdit')}
                 onClick={toggleOpenEditTextAreaHandler}
               >
-                Edit
+                {isEditing ? 'Cancel' : 'Edit'}
               </button>
               <button className={cx('commentItem-actionDelete')} onClick={handleDeleteComment}>
                 Delete
@@ -102,6 +155,11 @@ const CommentItem = ({ comment }: Props) => {
           <span>{checkTimeAgo((comment?.createdAt?.seconds as number) * 1000)}</span>
         </div>
       </div>
+      <ModalUserReactions
+        isShowModal={isShow}
+        toggleModal={toggleModal}
+        reactions={comment.reactions}
+      />
     </div>
   );
 };

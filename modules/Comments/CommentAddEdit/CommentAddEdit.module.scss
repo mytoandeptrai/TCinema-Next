@@ -35,6 +35,19 @@
     max-height: 150px;
     overflow-y: auto;
   }
+
+  &-edit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+
+    &__textArea {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 @media screen and (max-width: 767.98px) {

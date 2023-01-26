@@ -92,11 +92,20 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: var(--dark33);
-  border: 2px solid hsla(0, 0%, 100%, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s linear;
   img {
     width: 37px;
     height: 37px;
     object-fit: cover;
+  }
+
+  &:hover {
+    img{
+      transform: scale(1.2);
+    }
   }
 }
 

@@ -1,0 +1,89 @@
+.commentItem {
+  &-container {
+    display: flex;
+    gap: 16px;
+    margin: 8px 0;
+  }
+
+  &-avatar {
+    flex-shrink: 0;
+    img {
+      object-fit: cover;
+      background-color: var(--dark33);
+      border-radius: 50%;
+    }
+  }
+
+  &-main {
+    flex: 1;
+  }
+
+  &-content {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 8px 14px 18px;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  &-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &-desc {
+    margin-top: 8px;
+  }
+
+  &-actions {
+    margin-top: 4px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 14px;
+  }
+
+  &-reactions {
+    position: absolute;
+    bottom: -10px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(30 41 59);
+    padding: 2px 4px;
+    border-radius: 20px;
+    gap: 1px;
+    cursor: pointer;
+    span {
+      font-size: 1.4rem;
+      display: inline-block;
+      margin-left: 4px;
+    }
+  }
+
+  &-image {
+    width: 16px;
+    height: 16px;
+  }
+
+  &-actionEdit {
+    color: var(--purple);
+    background-color: transparent;
+    border: none;
+  }
+
+  &-actionDelete {
+    color: #df0c0c;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .commentItem {
+    &-actions {
+      font-size: 1.4rem;
+    }
+  }
+}

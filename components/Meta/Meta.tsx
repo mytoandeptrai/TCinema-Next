@@ -30,7 +30,7 @@ const Meta = ({
         content="tcinema, net-film, netfilm.vercel.app, mytoandeptrai"
         key="keywords"
       />
-      <link rel="icon" href="/favicon.png" key="favicon" />
+      <link rel="icon" href="/favicon.ico" key="favicon" />
       <link rel="canonical" href={server} key="canonical" />
       {/* Google / Search Engine Tags */}
       <meta itemProp="name" content={title} key="gg-name" />

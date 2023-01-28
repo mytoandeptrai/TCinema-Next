@@ -18,6 +18,7 @@ const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
   const [values, setValues] = useState({
     displayName: currentUser?.displayName || ''
   });
@@ -29,11 +30,14 @@ const ProfilePage = () => {
       try {
         e.preventDefault();
         if (!currentUser || !currentUser.uid) return;
+        setIsLoadingButton(true);
         const colRef = doc(db, 'users', currentUser.uid);
         await updateDoc(colRef, values);
         toast.success('Update profile successfully!');
+        setIsLoadingButton(false);
       } catch (error: any) {
         toast.error(error?.message);
+        setIsLoadingButton(false);
       }
     },
     [currentUser, values]
@@ -72,7 +76,12 @@ const ProfilePage = () => {
                       onChange={onChange}
                     />
                   </FormGroup>
-                  <Button type="submit" className={cx('aside-btn')}>
+                  <Button
+                    type="submit"
+                    className={cx('aside-btn')}
+                    loading={isLoadingButton}
+                    disabled={isLoadingButton}
+                  >
                     Update
                   </Button>
                 </form>

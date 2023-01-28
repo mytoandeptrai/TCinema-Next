@@ -66,7 +66,7 @@ const SearchBox = ({ className = '' }: Props) => {
   const handleSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      router.push(`${PATH.search}?keyword=${keywordSearching}`);
+      keywordSearching !== '' && router.push(`${PATH.search}?keyword=${keywordSearching}`);
       setKeywordSearching('');
     },
     [keywordSearching, router]

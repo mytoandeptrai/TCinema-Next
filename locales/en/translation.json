@@ -1,5 +1,11 @@
 {
   "hello": "Hello everyone",
   "home": "Home",
-  "introduction": "Introduction"
+  "introduction": "Introduction",
+  "header": {
+    "news": "News",
+    "history": "History",
+    "discovery": "Discovery",
+    "explore": "Explore"
+  }
 }

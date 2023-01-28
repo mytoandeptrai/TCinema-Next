@@ -104,3 +104,27 @@ export interface IMovieDetail {
   } | null;
   year: number;
 }
+
+export interface IMovieSearch {
+  areas: IObjIdName[];
+  categoryTag: IObjIdName[];
+  coverHorizontalUrl: string;
+  coverVerticalUrl: string;
+  domainType: number;
+  dramaType: {
+    code: string;
+    name: string;
+  };
+  duration: string;
+  id: string;
+  name: string;
+  releaseTime: string;
+  sort: string;
+  upInfo: {
+    enable: boolean;
+    upId: number;
+    upImgUrl: string;
+    upName: string;
+    userId: string | null;
+  };
+}

@@ -16,7 +16,6 @@ const CommentList = () => {
   const router = useRouter();
   const { id, category, episode } = router.query;
   const [commentsList, setCommentsList] = useState<IComment[]>();
-  console.log('🚀 ~ file: CommentList.tsx:19 ~ CommentList ~ commentsList', commentsList);
 
   useEffect(() => {
     let unSubscribe: Unsubscribe;

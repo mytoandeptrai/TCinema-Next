@@ -5,6 +5,7 @@ import { Image } from 'components/Image';
 import { WrapperLink } from 'components/WrapperLink';
 import { defaultAvatar } from 'constants/global';
 import { PATH } from 'constants/path';
+import { useRouter } from 'next/router';
 import React, { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'stores';
 import { logout } from 'stores/slices/auth';
@@ -33,6 +34,7 @@ const LINKS = [
 const AsideUser = () => {
   const { currentUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleLogout = useCallback(() => {
     dispatch(logout());
@@ -51,7 +53,13 @@ const AsideUser = () => {
       </div>
       <div className={cx('aside-links')}>
         {LINKS.map((link, index) => (
-          <WrapperLink key={index} href={link.path} className={cx('aside-item')}>
+          <WrapperLink
+            key={index}
+            href={link.path}
+            className={cx('aside-item', {
+              'aside-item__active': router.pathname === link.path
+            })}
+          >
             {link.icon}
             <span className={cx('aside-more')}>{link.display}</span>
           </WrapperLink>

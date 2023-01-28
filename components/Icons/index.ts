@@ -4,6 +4,7 @@ import IconBell from './IconBell';
 import IconClose from './IconClose';
 import IconEmptyFollow from './IconEmptyFollow';
 import IconEmptyHistory from './IconEmptyHistory';
+import IconEnglish from './IconEnglish';
 import IconFollow from './IconFollow';
 import IconGithub from './IconGithub';
 import IconHeart from './IconHeart';
@@ -21,6 +22,7 @@ import IconStar from './IconStar';
 import IconTrash from './IconTrash';
 import IconUploadImage from './IconUploadImage';
 import IconUser from './IconUser';
+import IconVietNam from './IconVietNam';
 
 export {
   IconStar,
@@ -45,5 +47,7 @@ export {
   IconShare,
   Icon404,
   Icon3Dot,
-  IconLoading
+  IconLoading,
+  IconVietNam,
+  IconEnglish
 };

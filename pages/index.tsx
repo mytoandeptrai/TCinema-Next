@@ -67,8 +67,16 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data } = await axiosClient.get(`/api/home`);
-    const { banners, homeSections } = data;
+    const homeAPIRequest = axiosClient.get(`/api/home`);
+    const bannerAPIRequest = axiosClient.get(`/api/banner`);
+    const [homeApiResponse, bannerApiResponse] = await Promise.all([
+      homeAPIRequest,
+      bannerAPIRequest
+    ]);
+
+    const banners = bannerApiResponse?.data;
+    const homeSections = homeApiResponse?.data?.homeSections;
+
     return {
       props: {
         banners: banners,

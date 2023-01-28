@@ -51,6 +51,11 @@
     position: relative;
     font-weight: 500;
     font-size: 1.6rem;
+
+    &__active {
+      color: var(--purple);
+    }
+
     &:hover {
       color: var(--purple);
     }
@@ -103,9 +108,16 @@
   }
 
   &:hover {
-    img{
+    img {
       transform: scale(1.2);
     }
+  }
+}
+
+.searchBox {
+  &-hidden {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 

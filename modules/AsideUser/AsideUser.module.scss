@@ -12,11 +12,13 @@
 
   &-displayName {
     font-size: 1.6rem;
+    margin-bottom: 5px;
   }
 
   &-email {
     font-size: 1.4rem;
     font-weight: 500;
+    color: var(--purple);
   }
 
   &-avatar {
@@ -44,6 +46,10 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
+    &__active {
+      color: var(--purple);
+    }
   }
 
   &-logout {

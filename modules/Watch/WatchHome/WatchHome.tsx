@@ -100,9 +100,9 @@ const WatchHome = ({ data }: Props) => {
   if (!isMounted) {
     return (
       <Meta
-        title={`${data.name} - NetFilm`}
-        description={data.introduction}
-        image={resizeImageLokLok(data.coverHorizontalUrl, 800, 418)}
+        title={`${data?.name} - NetFilm`}
+        description={data?.introduction}
+        image={resizeImageLokLok(data?.coverHorizontalUrl, 800, 418)}
       />
     );
   }
@@ -111,9 +111,9 @@ const WatchHome = ({ data }: Props) => {
     <LayoutPrimary>
       <div className={cx('container')}>
         <Meta
-          title={`${data.name} - NetFilm`}
-          description={data.introduction}
-          image={resizeImageLokLok(data.coverHorizontalUrl, 800, 418)}
+          title={`${data?.name} - NetFilm`}
+          description={data?.introduction}
+          image={resizeImageLokLok(data?.coverHorizontalUrl, 800, 418)}
         />
 
         <div className={cx('watchHome-container')}>

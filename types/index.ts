@@ -8,3 +8,4 @@ export * from './movie.type';
 export * from './news.type';
 export * from './star.type';
 export * from './video.type';
+export * from './follow.type';

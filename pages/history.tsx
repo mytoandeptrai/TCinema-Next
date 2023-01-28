@@ -10,21 +10,29 @@ import { MovieListSkeleton } from 'modules/Movies';
 import { Button } from 'components/ButtonCustomize';
 import { IconEmptyHistory, IconPlay, IconTrash } from 'components/Icons';
 import { PATH } from 'constants/path';
-import { WrapperLink } from 'components/WrapperLink';
 import { Image } from 'components/Image';
 import { formatTimeDuration } from 'utils/timeFormat';
 import { MovieTitle } from 'modules/Movies/MovieTitle';
+import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);
 
 const HistoryPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [historyMovies, setHistoryMovies] = useState<IHistoryView[]>([]);
+  const router = useRouter();
 
   const handleClearHistory = useCallback(() => {
     removeItemFromStorage(LOCAL_STORAGE_KEY.history);
     setHistoryMovies([]);
   }, []);
+
+  const handleMoveOnMovieDetail = useCallback(
+    (href: string) => {
+      router.push(href);
+    },
+    [router]
+  );
 
   useEffect(() => {
     const historyFromStorage: IHistoryView[] = getItemFromStorage(
@@ -64,7 +72,10 @@ const HistoryPage = () => {
                   const href = `${PATH.watch}/${movie.category}/${movie.id}`;
                   return (
                     <div className={cx('history-movieCard')} key={movie.id}>
-                      <WrapperLink href={href} className={cx('history-movieCardMedia')}>
+                      <div
+                        onClick={() => handleMoveOnMovieDetail(href)}
+                        className={cx('history-movieCardMedia')}
+                      >
                         <Image
                           src={movie.coverHorizontalUrl}
                           width={312}
@@ -90,7 +101,7 @@ const HistoryPage = () => {
                         <MovieTitle href={href} className={cx('history-movieCardTitle')}>
                           {movie.name} {movie.currentEpName && `- ${movie.currentEpName}`}
                         </MovieTitle>
-                      </WrapperLink>
+                      </div>
                     </div>
                   );
                 })}

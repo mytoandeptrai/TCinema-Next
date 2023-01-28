@@ -1,5 +1,11 @@
 {
   "hello": "Chào mọi người",
   "home": "Trang chủ",
-  "introduction": "Giới thiệu"
+  "introduction": "Giới thiệu",
+  "header": {
+    "news": "Tin mới",
+    "history": "Phim đã xem",
+    "discovery": "Khám phá",
+    "explore": "Bộ lọc"
+  }
 }

@@ -125,7 +125,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { query } = context;
     const { data } = await axiosClient.get('/api/category', { params: query });
-    console.log('🚀 ~ file: explore.tsx:128 ~ constgetServerSideProps:GetServerSideProps= ~ data', data, data?.results, data?.filters);
 
     return {
       props: {

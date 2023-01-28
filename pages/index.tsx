@@ -1,10 +1,9 @@
 import axiosClient from 'configs/axiosClient';
-import { REVALIDATE_TIME } from 'constants/global';
 import { LayoutPrimary } from 'layouts';
 import { CheckInView } from 'modules/CheckInView';
 import { HomeBanner, HomeSection } from 'modules/Home';
 import { MovieListSkeleton } from 'modules/Movies';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next/types';
 import { useFetchingHomeMoviesInfinity } from 'queries/movies';
 import { useCallback, useMemo } from 'react';
 import { IBanner, IHomeSection } from 'types';
@@ -65,7 +64,7 @@ const HomePage = ({ banners, initialHomeSections }: HomePageProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   try {
     const homeAPIRequest = axiosClient.get(`/api/home`);
     const bannerAPIRequest = axiosClient.get(`/api/banner`);
@@ -82,12 +81,10 @@ export const getStaticProps: GetStaticProps = async () => {
         banners: banners,
         initialHomeSections: homeSections
       },
-      revalidate: REVALIDATE_TIME.success
     };
   } catch (error) {
     return {
       props: { banners: [], initialHomeSections: [] },
-      revalidate: REVALIDATE_TIME.fail
     };
   }
 };

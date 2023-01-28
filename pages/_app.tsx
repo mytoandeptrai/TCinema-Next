@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Toaster position="top-right" />
           <ButtonScrollToTop />
         </Authentication>
-        <ReactQueryDevtools initialIsOpen={true} />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Provider>
   );
